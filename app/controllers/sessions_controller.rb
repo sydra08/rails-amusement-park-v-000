@@ -1,14 +1,13 @@
 class SessionsController < ApplicationController
-  before_action :require_login, only: [:destroy]
 
   def new
   end
 
   def create
     user = User.find_by(name: params[:user][:name])
-    if user.authenticate(params[:user][:password])
+    if user && user.authenticate(params[:user][:password])
       session[:user_id] = user.id
-      redirect_to user_path(user)
+      redirect_to user_path(user), notice: "Welcome back, #{user.name}!"
     else
       render :new
     end

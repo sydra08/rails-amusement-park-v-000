@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
-  before_action :require_login, only: [:show, :edit, :update]
 
   def show
-    current_user
   end
 
   def new
@@ -23,6 +21,11 @@ class UsersController < ApplicationController
   end
 
   def update
+    if @user.update(user_params)
+      redirect_to user_path(@user)
+    else
+      render :edit
+    end
   end
 
   private

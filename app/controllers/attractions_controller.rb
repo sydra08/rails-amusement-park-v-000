@@ -1,5 +1,4 @@
 class AttractionsController < ApplicationController
-  before_action :require_login
   before_action :set_attraction, only: [:show, :edit, :update]
 
   def index

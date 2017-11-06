@@ -1,0 +1,8 @@
+<% if user %>
+ <li><%= link_to user.name, user_path(user) %></li>
+ <li><%= link_to "See attractions", attractions_path %></li>
+ <li><%= link_to "Log Out", signout_path, method: 'delete' %></li>
+<% else %>
+  <li><%= link_to "Sign In", signin_path %></li>
+  <li><%= link_to "Sign Up", new_user_path %></li>
+<% end %>
